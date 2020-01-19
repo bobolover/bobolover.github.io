@@ -1,0 +1,19 @@
+{
+  "name": "hannq.github.io",
+  "version": "1.0.0",
+  "description": "blog",
+  "main": "index.html",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "fs-extra": "^8.1.0"
+  },
+  "scripts": {
+    "clean": "node ./scripts/clean.js"
+  },
+  "keywords": [],
+  "author": "hannq",
+  "license": "MIT"
+}
