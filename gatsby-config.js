@@ -1,47 +1,82 @@
-require(`dotenv`).config({
-  path: `.env`,
-})
-
 module.exports = {
+  pathPrefix: '/',
   siteMetadata: {
-    siteTitleAlt: `Cara - Gatsby Starter Portfolio`,
+    title: 'Calpa&apos;s Blog',
+    description: 'Front End Technical Blog - Calpa',
+    siteUrl: 'https://calpa.me',
+    author: 'Calpa',
   },
   plugins: [
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sass',
+    'gatsby-plugin-catch-links',
+    'gatsby-plugin-webpack-bundle-analyzer',
     {
-      resolve: `@lekoarts/gatsby-theme-cara`,
-      options: {},
-    },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        trackingId: process.env.GOOGLE_ANALYTICS_ID,
+        path: `${__dirname}/src/content`,
+        name: 'pages',
       },
     },
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-transformer-remark',
       options: {
-        name: `Cara - @lekoarts/gatsby-theme-cara`,
-        short_name: `Cara`,
-        description: `Playful and Colorful One-Page portfolio featuring Parallax effects and animations`,
-        start_url: `/`,
-        background_color: `#141821`,
-        theme_color: `#f6ad55`,
-        display: `standalone`,
-        icons: [
+        plugins: [
+          'gatsby-remark-autolink-headers',
           {
-            src: `/android-chrome-192x192.png`,
-            sizes: `192x192`,
-            type: `image/png`,
+            resolve: 'gatsby-remark-prismjs',
+            options: {
+              showLineNumbers: true,
+            },
           },
           {
-            src: `/android-chrome-512x512.png`,
-            sizes: `512x512`,
-            type: `image/png`,
+            resolve: 'gatsby-remark-external-links',
           },
         ],
       },
     },
-    `gatsby-plugin-offline`,
-    `gatsby-plugin-netlify`,
+    {
+      resolve: 'gatsby-plugin-layout',
+      options: {
+        component: require.resolve('./src/components/Layout/layout.js'),
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-sitemap',
+    },
+    {
+      resolve: 'gatsby-plugin-sentry',
+      options: {
+        dsn: 'https://fe988b5e96fc4634babe220e23464e15@sentry.io/1274827',
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-nprogress',
+    },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: "Calpa's Blog",
+        short_name: 'Calpa',
+        start_url: '/',
+        background_color: '#ededed',
+        theme_color: '#384f7c',
+        display: 'standalone',
+        icons: [
+          {
+            src: '/favicons/android-chrome-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
+          },
+          {
+            src: '/favicons/android-chrome-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+          },
+        ],
+      },
+    },
+    'gatsby-plugin-offline', // put this after gatsby-plugin-manifest
+    'gatsby-plugin-netlify', // make sure to put last in the array
   ],
-}
+};
