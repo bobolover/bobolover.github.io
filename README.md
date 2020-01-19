@@ -95,7 +95,7 @@ Looking for more guidance? Full documentation for Gatsby lives [on Gatsby's webs
 
 ### Themes
 
-- To learn more about Gatsby themes specifically, we recommend checking out the [theme docs](https://www.gatsbyjs.org/docs/themes/).
+- To  learn more about Gatsby themes specifically, we recommend checking out the [theme docs](https://www.gatsbyjs.org/docs/themes/).
 
 ### General
 
