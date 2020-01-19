@@ -20,7 +20,7 @@ If you like this project, please don't hesitate to star it. Thank you.
 
 ### Structure
 
-1. GatsbyJS v2, faster than faster
+1. GatsbyJS v2, faster than faster 3
 1. Google Analytics
 1. Offline support
 1. Web App Manifest
